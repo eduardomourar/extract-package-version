@@ -10,9 +10,13 @@ async function run() {
 
     const packagePath = path.join(dir, "package.json");
     const pkg = require(packagePath);
+    const name = pkg.name.toString();
     const version = pkg.version.toString();
-
+    const description = pkg.description.toString();
+    
+    core.setOutput("name", name);
     core.setOutput("version", version);
+    core.setOutput("description", description);
   } catch (error) {
     core.setFailed(error.message);
   }
